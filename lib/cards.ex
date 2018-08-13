@@ -3,19 +3,13 @@ defmodule Cards do
     values = ["Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King"]
     suits = ["Spades", "Clubs", "Hearts", "Diamonds"]
 
-    # List comprehensions
-    # Each element => do block => loaded into new list
-    # This returns a nested list - needs to be passed to List.flatten
-    cards = for suit <- suits do
-      for value <- values do
+    # Simultaneous comprehensions
+    for suit <- suits, value <- values do
         # Joining strings
         # value <> " of " <> suit
         # String interpolation
         "#{value} of #{suit}"
-      end
     end
-
-    List.flatten(cards)
   end
 
   def shuffle(deck) do

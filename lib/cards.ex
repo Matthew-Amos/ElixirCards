@@ -31,4 +31,21 @@ defmodule Cards do
     binary = :erlang.term_to_binary(deck)
     File.write(filename, binary)
   end
+
+  # Load from filesystem
+  def load(filename) do
+    # {status, binary} = File.read(filename)
+
+    # case status do
+    #   :ok -> :erlang.binary_to_term(binary)
+    #   :error -> "That file does not exist"
+    # end
+
+    # Refactored
+    case File.read(filename) do
+      {:ok, binary} -> :erlang.binary_to_term(binary)
+      {:error, _} -> "That file does not exist"
+    end
+
+  end
 end

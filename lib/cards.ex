@@ -19,4 +19,16 @@ defmodule Cards do
   def contains?(deck, card) do
     Enum.member?(deck, card)
   end
+
+  def deal(deck, hand_size) do
+    # Returns a {tuple} of {[hand_size], [remainder]}
+    Enum.split(deck, hand_size)
+  end
+
+  # Save to the filesystem
+  def save(deck, filename) do
+    # need to call erlang
+    binary = :erlang.term_to_binary(deck)
+    File.write(filename, binary)
+  end
 end
